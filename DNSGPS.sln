@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNSGPS", "DNSGPS\DNSGPS.csproj", "{BBFBDFA1-5A51-4759-A9AF-5DFA14EC7BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNSGPS", "DNSGPS\DNSGPS.csproj", "{BBFBDFA1-5A51-4759-A9AF-5DFA14EC7BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{187FAA28-3A2D-454A-94C2-06D85016FBD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BBFBDFA1-5A51-4759-A9AF-5DFA14EC7BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBFBDFA1-5A51-4759-A9AF-5DFA14EC7BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBFBDFA1-5A51-4759-A9AF-5DFA14EC7BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187FAA28-3A2D-454A-94C2-06D85016FBD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187FAA28-3A2D-454A-94C2-06D85016FBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187FAA28-3A2D-454A-94C2-06D85016FBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187FAA28-3A2D-454A-94C2-06D85016FBD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

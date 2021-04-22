@@ -3,8 +3,29 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>The input element</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Saludos gente</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="login_container">
+        <label for="user">User:</label>
+        <input type="text" id="user_textBox" name="user_textBox"><br><br>
+        <label for="password">Password:</label>
+        <input type="text" id="password_textBox" name="password_textBox"><br><br>
+        <button type="button" id="login_boton" onclick="login()">Login</button>
+    </div>
+
+    <div class="text-center">
+        <p id="demo">A Paragraph.</p>
+        <button type="button" onclick="myFunction()">Try it</button>
+
+        <button type="button" id="click_me_button">Click Me!</button>
+
+        <h1 class="display-4">Saludos gente</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+    <script src="site.js"></script>
+
+</body>
+</html>
