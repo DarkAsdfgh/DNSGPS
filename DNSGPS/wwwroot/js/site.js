@@ -40,17 +40,16 @@ function httpGet(theUrl) {
         pass = document.getElementById("password_textBox");
 
         if (user.value.length > 0 && pass.value.length > 0) {
-            //var succes = httpGet('https://api-dnsgps.azurewebsites.net/WeatherForecast')
-            var succes = await httpGet('https://localhost:44313/weatherforecast')
+            var succes = await httpGet('https://api-dnsgps.azurewebsites.net/WeatherForecast')
                 .then(
                     function (response) {
                         document.getElementById("user_textBox").innerHTML = "SUCCESS";
                     }
-                )/*.catch(
+                ).catch(
                     function (error) {
                         document.getElementById("user_textBox").innerHTML = "ERROR";
                     }
-                )*/;
+                );
 
         }
     }
