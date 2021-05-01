@@ -13,21 +13,44 @@
         document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
 
-    function httpGet(theUrl) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", theUrl, false); // false for synchronous request
-        xmlHttp.send(null);
-        return xmlHttp.responseText;
-    }
+function httpGet(theUrl) {
+    var promise;
 
-    function login() {
+
+    promise = new Promise(
+        function (resolve, reject) {
+
+        fetch(theUrl)
+
+            .then(function (response) {
+                resolve(response);
+            })
+           /* .catch(function (error) {
+                reject(error);
+            })*/;
+    });
+
+    return promise;
+}
+
+    async function login() {
         var user,
             pass;
         user = document.getElementById("user_textBox");
         pass = document.getElementById("password_textBox");
 
         if (user.value.length > 0 && pass.value.length > 0) {
-            var succes = JSON.parse(httpGet('https://localhost:44313/weatherforecast/login'));
-            console.log("");
+            //var succes = httpGet('https://api-dnsgps.azurewebsites.net/WeatherForecast')
+            var succes = await httpGet('https://localhost:44313/weatherforecast')
+                .then(
+                    function (response) {
+                        document.getElementById("user_textBox").innerHTML = "SUCCESS";
+                    }
+                )/*.catch(
+                    function (error) {
+                        document.getElementById("user_textBox").innerHTML = "ERROR";
+                    }
+                )*/;
+
         }
     }

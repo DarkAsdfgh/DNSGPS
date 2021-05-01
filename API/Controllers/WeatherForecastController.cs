@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors()]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -39,9 +41,9 @@ namespace API.Controllers
 
         [Route("login")]
         [HttpGet]
-        public bool login()
+        public string login()
         {
-            return true;
+            return "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         }
     }
 }
