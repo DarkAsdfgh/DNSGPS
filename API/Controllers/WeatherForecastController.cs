@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -25,6 +27,7 @@ namespace API.Controllers
             _logger = logger;
         }
 
+        [EnableCors()]
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -38,12 +41,19 @@ namespace API.Controllers
             .ToArray();
         }
 
-
+        [EnableCors()]
         [Route("login")]
         [HttpGet]
-        public string login()
+        public HttpResponseMessage login()
         {
-            return "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(
+                    "<strong>test</strong>",
+                    Encoding.UTF8,
+                    "text/html"
+                )
+            };
         }
     }
 }

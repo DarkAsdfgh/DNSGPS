@@ -20,14 +20,22 @@ function httpGet(theUrl) {
     promise = new Promise(
         function (resolve, reject) {
 
-        fetch(theUrl)
+        var myHeaders = new Headers();
+        myHeaders.append("Cookie", "ARRAffinity=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17; ARRAffinitySameSite=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17");
 
-            .then(function (response) {
-                resolve(response);
-            })
-           /* .catch(function (error) {
-                reject(error);
-            })*/;
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        fetch("https://api-dnsgps.azurewebsites.net/WeatherForecast/login", requestOptions)
+            .then(
+                function (response) {
+                    resolve(response.text());
+                }
+            )
+            .catch(error => reject(error));
     });
 
     return promise;
