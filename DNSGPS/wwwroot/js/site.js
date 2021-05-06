@@ -48,7 +48,7 @@ async function httpGet(theUrl) {
         pass = document.getElementById("password_textBox");
 
         if (user.value.length > 0 && pass.value.length > 0) {
-            var succes = await httpGet('https://api-dnsgps.azurewebsites.net/WeatherForecast')
+            var success = await httpGet('https://api-dnsgps.azurewebsites.net/WeatherForecast')
                 .then(
                     function (response) {
                         document.getElementById("user_textBox").innerHTML = "SUCCESS";
@@ -58,6 +58,6 @@ async function httpGet(theUrl) {
                         document.getElementById("user_textBox").innerHTML = "ERROR";
                     }
                 );
-
+            console.log(success);
         }
     }
