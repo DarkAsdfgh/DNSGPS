@@ -13,7 +13,7 @@
         document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
 
-function httpGet(theUrl) {
+async function httpGet(theUrl) {
     var promise;
 
 
@@ -24,20 +24,20 @@ function httpGet(theUrl) {
         myHeaders.append("Cookie", "ARRAffinity=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17; ARRAffinitySameSite=22a7daa836b64a8ce56c907737553d08297ff2e76cd06a1f52c29956b9a85c17");
 
         var requestOptions = {
+            mode: 'no-cors',
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
         };
 
-        fetch("https://api-dnsgps.azurewebsites.net/WeatherForecast/login", requestOptions)
+            fetch('https://api.weatherbit.io/v2.0/current?lat=35.7796&lon=-78.6382&key=f40ed5a72f5940f0975c7e30a0889ea4&include=minutely%27', requestOptions)
             .then(
-                function (response) {
-                    resolve(response.text());
+                async function (response) {
+                    resolve(await response.text());
                 }
             )
             .catch(error => reject(error));
     });
-
     return promise;
 }
 

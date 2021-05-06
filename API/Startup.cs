@@ -48,7 +48,6 @@ namespace API
                 .AllowAnyMethod()
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowCredentials()
             );
 
 
