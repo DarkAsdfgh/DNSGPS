@@ -9,8 +9,8 @@
     <div class="login_container">
         Iniciar sesión:<br>
         <form method="post" action="">
-            Usuario: <input type="text" id="user_textBox" name="user_textBox"><br>
-            Password: <input type="password" id="password_textBox" name="password_textBox"><br>
+            Usuario: <input type="text" id="user_textBox" name="user_textBox" required><br>
+            Password: <input type="password" id="password_textBox" name="password_textBox" required><br>
             <input type="submit" id="login_boton" onclick="login()" value="Enviar"/>
         </form>
     </div>
@@ -21,8 +21,8 @@
         <button type="button" id="click_me_button">Click Me!</button>
         <h1>Calcular ruta</h1>
         <form method="post">
-            Introduzca origen: <input type="text" id="origen" name="origen" placeholder="Ciudad de origen"><br>
-            Introduzca destino: <input type="text" id="destino" name="destino" placeholder="Ciudad de destino"><br>
+            Introduzca origen: <input type="text" id="origen" name="origen" placeholder="Ciudad de origen" required><br>
+            Introduzca destino: <input type="text" id="destino" name="destino" placeholder="Ciudad de destino" required><br>
             <input type="submit" id="calcular_ruta" onclick="calcular_ruta()" value="Calcular ruta">
         </form>
     </div>
