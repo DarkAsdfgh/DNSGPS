@@ -5,13 +5,40 @@
 }
 <!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv='X-UA-Compatible'/>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <title>SearchBox</title>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox.css' />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.1.2-public-preview.15/services/services-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox-web.js"></script>
+</head>
 <body>
+    <script>
+        var options = {
+            searchOptions: {
+                key: 'QNDSKoghJXsfleTToOkVBTPLwkaYbauA',
+                language: 'es-ES',
+                limit: 5
+            },
+            autocompleteOptions: {
+                key: 'QNDSKoghJXsfleTToOkVBTPLwkaYbauA',
+                language: 'es-ES'
+            }
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+        document.body.append(searchBoxHTML);
+    </script>
+
     <div class="login_container">
         Iniciar sesión:<br>
         <form method="post" action="">
             Usuario: <input type="text" id="user_textBox" name="user_textBox" required><br>
             Password: <input type="password" id="password_textBox" name="password_textBox" required><br>
-            <input type="submit" id="login_boton" onclick="login()" value="Enviar"/>
+            <input type="submit" id="login_boton" onclick="login()" value="Enviar" />
         </form>
     </div>
 
