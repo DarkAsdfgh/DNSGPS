@@ -14,17 +14,17 @@ public static class Webscrapping
     {
         public static void EjecutarCoordenadas()
         {
-            string pathPy = @"..\coords.py"
-            ScriptRutime py = Python.CreateRuntime();
-            dynamic pyProgram = py.Usefile(pathPy);
+            string pathPy = @"..\coords.py";
+            ScriptRuntime py = Python.CreateRuntime();
+            dynamic pyProgram = py.UseFile(pathPy);
             
         }
 
         public static void EjecutarTiempo()
         {
-            string pathPy = @"..\weather.py"
-            ScriptRutime py = Python.CreateRuntime();
-            dynamic pyProgram = py.Usefile(pathPy);
+            string pathPy = @"..\weather.py";
+            ScriptRuntime py = Python.CreateRuntime();
+            dynamic pyProgram = py.UseFile(pathPy);
             
         }
         
