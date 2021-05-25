@@ -12,11 +12,20 @@ using System.Collections.Specialized;
 
 public class Ruta
     {
-        
-        public void CalcularRuta()
+        public void EjecutarCoordenadas()
         {
-            ScriptEngine engine = Python.CreateEngine();
-            dynamic scope = engine.CreateScope();
+            string pathPy = @"..\coords.py"
+            ScriptRutime py = Python.CreateRuntime();
+            dynamic pyProgram = py.Userfile(pathPy);
             
         }
+
+        public void EjecutarTiempo()
+        {
+            string pathPy = @"..\weather.py"
+            ScriptRutime py = Python.CreateRuntime();
+            dynamic pyProgram = py.Userfile(pathPy);
+            
+        }
+        
     }
