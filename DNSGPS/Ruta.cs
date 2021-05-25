@@ -28,4 +28,11 @@ public class Ruta
             
         }
         
+        static void Main(string[] args)
+        {
+            EjecutaCoordenadas();
+            EjecutarTiempo();
+        
+        }
+        
     }
