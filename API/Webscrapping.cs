@@ -10,29 +10,22 @@ using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting;
 using System.Collections.Specialized;
 
-public class Ruta
+public static class Webscrapping
     {
-        public void EjecutarCoordenadas()
+        public static void EjecutarCoordenadas()
         {
             string pathPy = @"..\coords.py"
             ScriptRutime py = Python.CreateRuntime();
-            dynamic pyProgram = py.Userfile(pathPy);
+            dynamic pyProgram = py.Usefile(pathPy);
             
         }
 
-        public void EjecutarTiempo()
+        public static void EjecutarTiempo()
         {
             string pathPy = @"..\weather.py"
             ScriptRutime py = Python.CreateRuntime();
-            dynamic pyProgram = py.Userfile(pathPy);
+            dynamic pyProgram = py.Usefile(pathPy);
             
-        }
-        
-        static void Main(string[] args)
-        {
-            EjecutaCoordenadas();
-            EjecutarTiempo();
-        
         }
         
     }

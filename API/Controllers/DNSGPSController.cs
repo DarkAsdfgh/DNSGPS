@@ -38,6 +38,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<DNSGPS> ApiRequest()
         {
+         
             using (HttpClient client = new HttpClient())
             {
             
