@@ -3,15 +3,7 @@
 
 // Write your JavaScript code.
 
-    function clickMe() {
-        $("#click_me_button").bind("click", function () {
-            console.log("HOLA");
-        });
-    }
 
-    function myFunction() {
-        document.getElementById("demo").innerHTML = "Paragraph changed.";
-}
 
 async function httpGet(theUrl) {
     var promise;
