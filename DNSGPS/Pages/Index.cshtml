@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@using System.Web;
 @{
     ViewData["Title"] = "Home page";
 }
@@ -20,11 +21,13 @@
     <div class="text-center">
         <h1>Calcular ruta</h1>
         <form method="post">
-            Introduzca origen: <input type="text" id="origen" name="origen" placeholder="Ciudad de origen" required><br>
-            Introduzca destino: <input type="text" id="destino" name="destino" placeholder="Ciudad de destino" required><br>
-            <input type="submit" id="calcular_ruta" onclick="calcular_ruta()" value="Calcular ruta">
+            Introduzca origen: <asp:TextBox id="origen" name="origen" placeholder="Ciudad de origen" required><br>
+            Introduzca destino: <asp:TextBox id="destino" name="destino" placeholder="Ciudad de destino" required><br>
+            <asp:Button id="calcular_ruta" runat="server" OnClick="CalcularRuta" Text="Calcular ruta">
         </form>
     </div>
+
+    <p id="respuesta"></p>
     <script src="site.js"></script>
 
 </body>
