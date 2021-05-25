@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -18,8 +20,8 @@ print(lista_provincias)
 if lista_provincias.__contains__("Cuenca"):
     lista_provincias.remove("Cuenca")
     lista_provincias.append("Cuenca_(España)")
-if lista_provincias.__contains__("Córdoba"):
-        lista_provincias.remove("Córdoba")
+if lista_provincias.__contains__("Cordoba"):
+        lista_provincias.remove("Cordoba")
         lista_provincias.append("Córdoba_(España)")
 if lista_provincias.__contains__("Guadalajara"):
         lista_provincias.remove("Guadalajara")

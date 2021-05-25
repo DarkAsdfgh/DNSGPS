@@ -9,15 +9,23 @@ using IronPython;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting;
 using System.Collections.Specialized;
+using System.IO;
 
 public static class Webscrapping
     {
         public static void EjecutarCoordenadas()
         {
-            string pathPy = @"..\coords.py";
+            string pythonFile="";
+            foreach (string nameFile in Directory.GetFiles(Directory.GetCurrentDirectory()))
+            {
+                if (nameFile.Contains("coords.py"))
+                {
+                    pythonFile = nameFile;
+                }
+            }    
+
             ScriptRuntime py = Python.CreateRuntime();
-            dynamic pyProgram = py.UseFile(pathPy);
-            
+            dynamic pyProgram = py.UseFile(pythonFile);          
         }
 
         public static void EjecutarTiempo()

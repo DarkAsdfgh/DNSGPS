@@ -21,11 +21,6 @@ namespace API.Controllers
     [EnableCors()]
     public class DNSGPSController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<DNSGPSController> _logger;
 
         public DNSGPSController(ILogger<DNSGPSController> logger)
@@ -38,7 +33,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<DNSGPS> ApiRequest()
         {
-         
+            Webscrapping.EjecutarCoordenadas();
+
             using (HttpClient client = new HttpClient())
             {
             
