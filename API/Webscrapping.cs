@@ -39,7 +39,7 @@ public static class Webscrapping
 
         string[,] matrizTiempos = new string[52, 2];
 
-        for (int i=0; i< provincias.Count; i++){
+        for (int i=0; i< 52; i++){   
             for (int j=0; j < 2; j++){
                 if (j==0){ matrizTiempos[i,j] = provincias[i]; }
                 else { matrizTiempos[i,j] = tiempos[i]; }
