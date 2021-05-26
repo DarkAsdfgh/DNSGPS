@@ -1,8 +1,10 @@
 ﻿@page
 @model IndexModel
 @{
+    @using System.Web;
+    @using System.Text;
     ViewData["Title"] = "Home page";
-
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,19 +15,25 @@
         <form method="post" action="">
             Usuario: <input type="text" id="user_textBox" name="user_textBox" required><br>
             Password: <input type="password" id="password_textBox" name="password_textBox" required><br>
-            <input type="submit" id="login_boton" onclick="prueba()" value="Enviar" 
-               @{
-                   var v = DNSGPS.Controller.ApiRequest();
-                }>
+            <input type="button" id="login_boton" onclick="prueba()" value="Enviar" 
         </form>
     </div>
 
     <div class="text-center">
         <h1>Calcular ruta</h1>
-        <form method="post">
+        <form method="get">
             Introduzca origen: <input type="text" id="origen" name="origen" placeholder="Ciudad de origen" required><br>
             Introduzca destino: <input type="text" id="destino" name="destino" placeholder="Ciudad de destino" required><br>
             <input type="submit" id="calcular_ruta" value="Calcular ruta">
+            @{
+                var origen = Request.Query["origen"].ToString();
+                var destino = Request.Query["destino"].ToString();
+                Console.WriteLine(origen + destino);
+                byte[] bytes = Encoding.UTF8.GetBytes("<h1>"+origen+destino+"</h1>");
+                await Response.Body.WriteAsync(bytes);
+                var v = DNSGPS.Controller.ApiRequest();
+
+            }
         </form>
     </div>
 
