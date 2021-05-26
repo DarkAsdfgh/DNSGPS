@@ -37,7 +37,7 @@ public static class Webscrapping
             provincias.Add(node.InnerText);
         }
 
-        string[,] matrizTiempos = new string[10, 10];
+        string[,] matrizTiempos = new string[52, 2];
 
         for (int i=0; i< provincias.Count; i++){
             for (int j=0; j < 2; j++){
@@ -53,16 +53,16 @@ public static class Webscrapping
     public static string[,] EjecutarCoordenadas()
     {
         List<string> ciudades = new List<string>();
-
-        System.IO.StreamReader file = System.IO.StreamReader(@"");
-        int i = 0;
-        while( ( ciudades[i] = file.ReadLine() )!= null)
+        string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
+        System.IO.StreamReader file = new System.IO.StreamReader(path);
+        string ciudad ="";
+        while ((ciudad = file.ReadLine())!= null)
         {
-            i++;
+            ciudades.Add(ciudad);
         }
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
-        for (int j=0; j<ciudades.Count; i++)
+        for (int j=0; j<ciudades.Count; j++)
         {
             var url = @"http://www.tiempo.com/" + ciudades[j];
             HtmlWeb webCoord = new HtmlWeb();
@@ -76,6 +76,7 @@ public static class Webscrapping
             {
                 listaLatitudes.Append(latitudes[k].InnerText);
                 listaLongitudes.Append(longitudes[k].InnerText);
+                Console.WriteLine(listaLatitudes[j] + listaLongitudes[j]);
 
             }
 
