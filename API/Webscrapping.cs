@@ -68,8 +68,7 @@ public static class Webscrapping
 
         for (int j = 0; j < 52; j++)
         {
-            Console.WriteLine(j);
-            Console.WriteLine(ciudades[j]);
+            
             var url = @"http://es.wikipedia.org/wiki/" + ciudades[j];
             var htmlDocCoord = webCoord.Load(url);
             htmlDocCoord.OptionEmptyCollection = true;
@@ -79,20 +78,18 @@ public static class Webscrapping
             for (int k=0; k<1; k++)
             {
                 listaLatitudes.Add(latitudes[k].InnerText);
-                listaLongitudes.Add(longitudes[k].InnerText);
-                
+                listaLongitudes.Add(longitudes[k].InnerText);   
             }
-            Console.WriteLine(listaLatitudes[j] + listaLongitudes[j]);
+            
         }
 
-        string[,] matrizCoordenadas = new string[52, 3];
+        string[,] matrizCoordenadas = new string[52, 2];
         for (int i = 0; i < 52; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < 2; j++)
             {
                 if (j == 0) { matrizCoordenadas[i, j] = ciudades[i]; }
-                else if(j==1) { matrizCoordenadas[i, j] = listaLatitudes[i]; }
-                else { matrizCoordenadas[i, j] = listaLongitudes[i]; }
+                else if(j==1) { matrizCoordenadas[i, j] = listaLatitudes[i] + "," + listaLongitudes[i]; }
             }
         }
 
