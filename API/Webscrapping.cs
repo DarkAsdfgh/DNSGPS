@@ -89,7 +89,7 @@ public static class Webscrapping
             for (int j = 0; j < 2; j++)
             {
                 if (j == 0) { matrizCoordenadas[i, j] = ciudades[i]; }
-                else if(j==1) { matrizCoordenadas[i, j] = listaLatitudes[i] + "," + listaLongitudes[i]; }
+                else if(j==1) { matrizCoordenadas[i, j] = listaLatitudes[i] + listaLongitudes[i]; } //latitud,longitud
             }
         }
 
