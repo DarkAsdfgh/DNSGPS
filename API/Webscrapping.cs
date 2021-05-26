@@ -15,30 +15,22 @@ using System.Text;
 
 public static class Webscrapping
 {
-    public static void EjecutarCoordenadas()
-    {
-        var html = @"http://html-agility-pack.net/";
-        HtmlWeb web = new HtmlWeb();
-        var htmlDoc = web.Load(html);
-
-
-    }
-
-    public static void EjecutarTiempo()
+    public static string[,] EjecutarTiempo()
     {
         var html = @"http://www.tiempo.com/";
         HtmlWeb web = new HtmlWeb();
         web.OverrideEncoding = Encoding.UTF8;
         var htmlDoc = web.Load(html);
 
-        public List<string> tiempos = new List<string>();
+        List<string> tiempos = new List<string>();
         var nodes = htmlDoc.DocumentNode.SelectNodes("//abbr[@class='des-mapa']");
-        foreach (HtmlNode node in nodes)
+        
+        for (int i=0; i<nodes.Count; i = i + 2)
         {
-            tiempos.Add(node.InnerText);
+            tiempos.Add(nodes[i].InnerText);
         }
-
-        public List<string> provincias = new List<string>();
+        
+        List<string> provincias = new List<string>();
         nodes = htmlDoc.DocumentNode.SelectNodes("//dt");
         foreach (HtmlNode node in nodes)
         {
@@ -51,14 +43,23 @@ public static class Webscrapping
                 tw.WriteLine(provincia);
         }
 
-        /*public matrizTiempos = new string[10,10];
+        string[,] matrizTiempos = new string[10, 10];
 
         for (int i=0; i< provincias.Count; i++){
             for (int j=0; j < 2; j++){
-                if (j==0){ matrizTiempos[i][j] = provincias[i]; }
-                else { matrizTiempos[i][j] = tiempos[i]; }
+                if (j==0){ matrizTiempos[i,j] = provincias[i]; }
+                else { matrizTiempos[i,j] = tiempos[i]; }
             }
-        }*/
+        }
+
+        return matrizTiempos;
 
     }
+
+    public static void EjecutarCoordenadas()
+    {
+        
+    }
+
+
 }

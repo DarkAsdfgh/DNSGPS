@@ -33,7 +33,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<DNSGPS> ApiRequest()
         {
-            Webscrapping.EjecutarTiempo();
+            string[,] matrizTiempos = new string[10, 10];
+            matrizTiempos = Webscrapping.EjecutarTiempo();
 
             using (HttpClient client = new HttpClient())
             {
