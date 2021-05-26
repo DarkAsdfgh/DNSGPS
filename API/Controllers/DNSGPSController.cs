@@ -39,6 +39,12 @@ namespace API.Controllers
             string[,] matrizCoordenadas = new string[10, 10];
             matrizCoordenadas = Webscrapping.EjecutarCoordenadas();
 
+            string coordenadas = Coordenadas.CambiaACoordenadas("Almería", "Santander",matrizCoordenadas);
+            string ciudad = Coordenadas.CambiaACiudad("37.769722222222,-3.7888888888889", matrizCoordenadas);
+
+            Console.WriteLine(coordenadas);
+            Console.WriteLine(ciudad);
+
             using (HttpClient client = new HttpClient())
             {
             
