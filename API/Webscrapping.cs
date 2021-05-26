@@ -39,7 +39,7 @@ public static class Webscrapping
 
         string[,] matrizTiempos = new string[52, 2];
 
-        for (int i=0; i< provincias.Count; i++){
+        for (int i=0; i< 52; i++){   
             for (int j=0; j < 2; j++){
                 if (j==0){ matrizTiempos[i,j] = provincias[i]; }
                 else { matrizTiempos[i,j] = tiempos[i]; }
@@ -63,7 +63,7 @@ public static class Webscrapping
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
 
-        for (int j = 0; j < ciudades.Count; j++)
+        for (int j = 0; j < 52; j++)
         {
             Console.WriteLine(j);
             Console.WriteLine(ciudades[j]);
@@ -85,7 +85,7 @@ public static class Webscrapping
         }
 
         string[,] matrizCoordenadas = new string[10, 10];
-        for (int i = 0; i < ciudades.Count; i++)
+        for (int i = 0; i < 52; i++)
         {
             for (int j = 0; j < 3; j++)
             {
