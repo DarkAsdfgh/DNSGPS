@@ -63,13 +63,14 @@ public static class Webscrapping
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
 
+        HtmlWeb webCoord = new HtmlWeb();
+        webCoord.OverrideEncoding = Encoding.UTF8;
+
         for (int j = 0; j < 52; j++)
         {
             Console.WriteLine(j);
             Console.WriteLine(ciudades[j]);
             var url = @"http://es.wikipedia.org/wiki/" + ciudades[j];
-            HtmlWeb webCoord = new HtmlWeb();
-            webCoord.OverrideEncoding = Encoding.UTF8;
             var htmlDocCoord = webCoord.Load(url);
             htmlDocCoord.OptionEmptyCollection = true;
             var latitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='geo']//span[@class='latitude']");
@@ -84,7 +85,7 @@ public static class Webscrapping
             Console.WriteLine(listaLatitudes[j] + listaLongitudes[j]);
         }
 
-        string[,] matrizCoordenadas = new string[10, 10];
+        string[,] matrizCoordenadas = new string[52, 3];
         for (int i = 0; i < 52; i++)
         {
             for (int j = 0; j < 3; j++)
