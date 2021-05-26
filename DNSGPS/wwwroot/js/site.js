@@ -52,4 +52,9 @@ async function httpGet(theUrl) {
                 );
             console.log(success);
         }
-    }
+}
+
+function prueba() {
+    var id = document.getElementById("login_boton");
+    PageMethods.GetCurrentTime(id.value, OnSuccess);
+}

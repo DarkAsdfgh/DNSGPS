@@ -2,7 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,10 @@
         <form method="post" action="">
             Usuario: <input type="text" id="user_textBox" name="user_textBox" required><br>
             Password: <input type="password" id="password_textBox" name="password_textBox" required><br>
-            <input type="submit" id="login_boton" onclick="login()" value="Enviar" />
+            <input type="submit" id="login_boton" onclick="prueba()" value="Enviar" 
+               @{
+                   var v = DNSGPS.Controller.ApiRequest();
+                }>
         </form>
     </div>
 
@@ -31,3 +34,4 @@
 
 </body>
 </html>
+}

@@ -1,68 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using IronPython.Hosting;
-using IronPython.Runtime;
-using IronPython;
-using Microsoft.Scripting.Hosting;
-using Microsoft.Scripting;
-using System.Collections.Specialized;
-using System.IO;
-using HtmlAgilityPack;
-using System.Text;
-
-
-public static class Coordenadas
+﻿namespace DNSGPS
 {
-    public static string CambiaACoordenadas(string origen, string destino, string[,] matrizCoordenadas)
+    public static class Coordenadas
     {
-        var coordenadas_origen = "";
-        var coordenadas_destino = "";
-        var coordenadas = "";
-        for (int i = 0; i < 52; i++)
+        public static string CambiaACoordenadas(string origen, string destino, string[,] matrizCoordenadas)
         {
-            if (matrizCoordenadas[i, 0].Contains(origen))
+            var coordenadas_origen = "";
+            var coordenadas_destino = "";
+            var coordenadas = "";
+            for (int i = 0; i < 52; i++)
             {
-                coordenadas_origen = matrizCoordenadas[i, 1];
+                if (matrizCoordenadas[i, 0].Contains(origen))
+                {
+                    coordenadas_origen = matrizCoordenadas[i, 1];
+                }
+                else if (matrizCoordenadas[i, 0].Contains(destino))
+                {
+                    coordenadas_destino = matrizCoordenadas[i, 1];
+                }
             }
-            else if (matrizCoordenadas[i, 0].Contains(destino))
+            coordenadas = coordenadas_origen + ":" + coordenadas_destino;
+            if (coordenadas.Equals(""))
             {
-                coordenadas_destino = matrizCoordenadas[i, 1];
+                return "error";
+            }
+            else
+            {
+                return coordenadas;
             }
         }
-        coordenadas = coordenadas_origen + ":" + coordenadas_destino;
-        if (coordenadas.Equals(""))
+        public static string CambiaACiudad(string coordCambiar, string[,] matrizCoordenadas) //37.88336,-4.7665
         {
-            return "error";
-        }
-        else
-        {
-            return coordenadas;
+            string ciudad = "";
+            for (int i = 0; i < 52; i++)
+            {
+                if (matrizCoordenadas[i, 1] == coordCambiar)
+                {
+                    ciudad = matrizCoordenadas[i, 0];
+                }
+            }
+            if (ciudad.Equals(""))
+            {
+                return "error";
+            }
+            else
+            {
+                return ciudad;
+            }
         }
     }
-    public static string CambiaACiudad(string coordCambiar, string[,] matrizCoordenadas) //37.88336,-4.7665
-    {
-        string ciudad = "";
-        for (int i = 0; i < 52; i++)
-        {
-            if (matrizCoordenadas[i, 1] == coordCambiar)
-            {
-                ciudad = matrizCoordenadas[i, 0];
-            }
-        }
-        if (ciudad.Equals(""))
-        {
-            return "error";
-        }
-        else
-        {
-            return ciudad;
-        }
-    }
-}
-            
+}        
             /* List<string> listaCoordenadas = new List<string>();
             string ciudad = "";
 
