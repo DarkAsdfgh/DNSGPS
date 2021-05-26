@@ -37,12 +37,6 @@ public static class Webscrapping
             provincias.Add(node.InnerText);
         }
 
-        using (TextWriter tw = new StreamWriter("provincias.txt"))
-        {
-            foreach (String provincia in provincias)
-                tw.WriteLine(provincia);
-        }
-
         string[,] matrizTiempos = new string[10, 10];
 
         for (int i=0; i< provincias.Count; i++){
@@ -56,9 +50,52 @@ public static class Webscrapping
 
     }
 
-    public static void EjecutarCoordenadas()
+    public static string[,] EjecutarCoordenadas()
     {
-        
+        List<string> ciudades = new List<string>();
+
+        System.IO.StreamReader file = System.IO.StreamReader(@"");
+        int i = 0;
+        while( ( ciudades[i] = file.ReadLine() )!= null)
+        {
+            i++;
+        }
+        List<string> listaLatitudes = new List<string>();
+        List<string> listaLongitudes = new List<string>();
+        for (int j=0; j<ciudades.Count; i++)
+        {
+            var url = @"http://www.tiempo.com/" + ciudades[j];
+            HtmlWeb webCoord = new HtmlWeb();
+            webCoord.OverrideEncoding = Encoding.UTF8;
+            var htmlDocCoord = webCoord.Load(url);
+
+            var latitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='latitude']");
+            var longitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='longitude']");
+
+            for (int k=0; k<1; k++)
+            {
+                listaLatitudes.Append(latitudes[k].InnerText);
+                listaLongitudes.Append(longitudes[k].InnerText);
+
+            }
+
+        }
+
+        string[,] matrizCoordenadas = new string[10, 10];
+        for (int i = 0; i < ciudades.Count; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (j == 0) { matrizCoordenadas[i, j] = ciudades[i]; }
+                else if(j==1) { matrizCoordenadas[i, j] = listaLatitudes[i]; }
+                else { matrizCoordenadas[i, j] = listaLongitudes[i]; }
+            }
+        }
+
+        return matrizCoordenadas;
+
+
+
     }
 
 

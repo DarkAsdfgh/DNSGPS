@@ -36,6 +36,9 @@ namespace API.Controllers
             string[,] matrizTiempos = new string[10, 10];
             matrizTiempos = Webscrapping.EjecutarTiempo();
 
+            string[,] matrizCoordenadas = new string[10, 10];
+            matrizCoordenadas = Webscrapping.EjecutarCoordenadas();
+
             using (HttpClient client = new HttpClient())
             {
             
