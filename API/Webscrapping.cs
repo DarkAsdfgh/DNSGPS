@@ -62,24 +62,26 @@ public static class Webscrapping
         }
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
-        for (int j=0; j<ciudades.Count; j++)
+
+        for (int j = 0; j < ciudades.Count; j++)
         {
-            var url = @"http://www.tiempo.com/" + ciudades[j];
+            Console.WriteLine(j);
+            Console.WriteLine(ciudades[j]);
+            var url = @"http://es.wikipedia.org/wiki/" + ciudades[j];
             HtmlWeb webCoord = new HtmlWeb();
             webCoord.OverrideEncoding = Encoding.UTF8;
             var htmlDocCoord = webCoord.Load(url);
-
-            var latitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='latitude']");
-            var longitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='longitude']");
+            htmlDocCoord.OptionEmptyCollection = true;
+            var latitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='geo']//span[@class='latitude']");
+            var longitudes = htmlDocCoord.DocumentNode.SelectNodes("//span[@class='geo']//span[@class='longitude']");
 
             for (int k=0; k<1; k++)
             {
-                listaLatitudes.Append(latitudes[k].InnerText);
-                listaLongitudes.Append(longitudes[k].InnerText);
-                Console.WriteLine(listaLatitudes[j] + listaLongitudes[j]);
-
+                listaLatitudes.Add(latitudes[k].InnerText);
+                listaLongitudes.Add(longitudes[k].InnerText);
+                
             }
-
+            Console.WriteLine(listaLatitudes[j] + listaLongitudes[j]);
         }
 
         string[,] matrizCoordenadas = new string[10, 10];
