@@ -33,7 +33,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<DNSGPS> ApiRequest()
         {
-            Webscrapping.EjecutarCoordenadas();
+            Webscrapping.EjecutarTiempo();
 
             using (HttpClient client = new HttpClient())
             {

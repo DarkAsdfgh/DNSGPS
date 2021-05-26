@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from bs4 import BeautifulSoup
+from BeautifulSoup import BeautifulSoup
 import requests
 import pandas as pd
 
