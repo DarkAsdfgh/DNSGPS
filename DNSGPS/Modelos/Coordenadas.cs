@@ -36,16 +36,26 @@
                 if (matrizCoordenadas[i, 1] == coordCambiar)
                 {
                     ciudad = matrizCoordenadas[i, 0];
+                    return ciudad;
                 }
             }
-            if (ciudad.Equals(""))
+            return "Ninguna coincidencia";
+            
+        }
+        public static string TiempoCiudad(string nombreCiudad, string[,] matrizTiempos)
+        {
+            string tiempo = "";
+            for (int i=0; i < 52; i++)
             {
-                return "error";
+                if (nombreCiudad == matrizTiempos[i, 0])
+                {
+                    tiempo = matrizTiempos[i,1];
+                    return tiempo;
+                }
             }
-            else
-            {
-                return ciudad;
-            }
+            tiempo = "No se han encontrado coincidencias";
+            return tiempo;
+
         }
     }
 }        

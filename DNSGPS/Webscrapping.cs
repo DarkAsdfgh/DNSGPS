@@ -42,14 +42,68 @@ public static class Webscrapping
 
     public static string[,] EjecutarCoordenadas()
     {
-        List<string> ciudades = new List<string>();
-        string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
-        System.IO.StreamReader file = new System.IO.StreamReader(path);
+        List<string> ciudades = new List<string>()
+        {
+            "Almería",
+            "Vitoria - Gasteiz",
+            "Albacete",
+            "Madrid",
+            "Alicante",
+            "Ávila",
+            "Badajoz",
+            "Palma de Mallorca",
+            "Barcelona",
+            "Burgos",
+            "Ciudad Real",
+            "Cáceres",
+            "Cadiz",
+            "Granada",
+            "Córdoba_(España)",
+            "A Coruña",
+            "Girona",
+            "Castellón de la Plana",
+            "Guadalajara_(España)",
+            "Cuenca_(España)",
+            "Huelva",
+            "Jaén",
+            "León_(España)",
+            "Lleida",
+            "Huesca",
+            "Donostia - San Sebastián",
+            "Logroño",
+            "Lugo",
+            "Málaga",
+            "Murcia",
+            "Ourense",
+            "Palencia",
+            "Las Palmas de Gran Canaria",
+            "Pontevedra",
+            "Pamplona",
+            "Oviedo",
+            "Sevilla",
+            "Salamanca",
+            "Segovia",
+            "Santa Cruz de Tenerife",
+            "Santander_(España)",
+            "Soria",
+            "Tarragona",
+            "Teruel",
+            "Toledo",
+            "Zamora",
+            "Bilbao",
+            "Valencia",
+            "Valladolid",
+            "Zaragoza",
+            "Ceuta",
+            "Melilla"
+        };
+        //string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
+       // System.IO.StreamReader file = new System.IO.StreamReader(path);
         string ciudad ="";
-        while ((ciudad = file.ReadLine())!= null)
+        /*while ((ciudad = file.ReadLine())!= null)
         {
             ciudades.Add(ciudad);
-        }
+        }*/
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
 
