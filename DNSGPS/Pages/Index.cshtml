@@ -5,7 +5,6 @@
     @using System.Text;
     ViewData["Title"] = "Home page";
 
-    Console.WriteLine(Request.Method);
     if (Request.Method == "POST")
     {
         var origen = Request.Form["origen"].ToString();
