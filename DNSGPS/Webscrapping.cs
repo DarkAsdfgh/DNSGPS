@@ -2,6 +2,7 @@
 using System.IO;
 using HtmlAgilityPack;
 using System.Text;
+using System;
 
 public static class Webscrapping
 {
@@ -95,6 +96,7 @@ public static class Webscrapping
         ciudades.Add("Zaragoza");
         ciudades.Add("Ceuta");
         ciudades.Add("Melilla");
+        Console.WriteLine(ciudades.Count);
         //string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
        // System.IO.StreamReader file = new System.IO.StreamReader(path);
         //string ciudad ="";
@@ -110,7 +112,6 @@ public static class Webscrapping
 
         for (int j = 0; j < 52; j++)
         {
-            
             var url = @"http://es.wikipedia.org/wiki/" + ciudades[j];
             var htmlDocCoord = webCoord.Load(url);
             htmlDocCoord.OptionEmptyCollection = true;
