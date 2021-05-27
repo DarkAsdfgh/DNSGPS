@@ -21,7 +21,7 @@
             coordenadas = coordenadas_origen + ":" + coordenadas_destino;
             if (coordenadas.Equals(""))
             {
-                return "error";
+                return "Coordenadas indeterminadas";
             }
             else
             {
@@ -39,60 +39,24 @@
                     return ciudad;
                 }
             }
-            return "Ninguna coincidencia";
             
+            return coordCambiar;
+
         }
         public static string TiempoCiudad(string nombreCiudad, string[,] matrizTiempos)
         {
             string tiempo = "";
             for (int i=0; i < 52; i++)
             {
-                if (nombreCiudad == matrizTiempos[i, 0])
+                if (matrizTiempos[i,0].Contains(nombreCiudad))
                 {
                     tiempo = matrizTiempos[i,1];
                     return tiempo;
                 }
             }
-            tiempo = "No se han encontrado coincidencias";
+            tiempo = "Tiempo indeterminado";
             return tiempo;
 
         }
     }
 }        
-            /* List<string> listaCoordenadas = new List<string>();
-            string ciudad = "";
-
-            ArraySegment<string> arrayCoordenadas = new ArraySegment<string>();
-            arrayCoordenadas = coordCambiar.Split(",");
-            double coord_lat = System.Convert.ToDouble(arrayCoordenadas[0]);
-            double coord_lon = System.Convert.ToDouble(arrayCoordenadas[1]);
-
-            Console.WriteLine(coord_lat + "   " + coord_lon);
-
-            coord_lat = (double)(Math.Round((double)coord_lat,2));
-            coord_lon = (double)(Math.Round((double)coord_lat, 2));
-
-            for (int i = 0; i < 52; i++)
-            {
-                ArraySegment<string> arrayCoordMatriz = new ArraySegment<string>();
-                arrayCoordMatriz = matrizCoordenadas[i,1].Split(",");
-                Console.WriteLine(arrayCoordMatriz[0] + "-+-+-+-+-+" + arrayCoordMatriz[1]);
-                double matCoordLat = System.Convert.ToDouble(arrayCoordMatriz[0]);
-                double matCoordLon = System.Convert.ToDouble(arrayCoordMatriz[1]);
-                
-                matCoordLat = (double)(Math.Round((double)matCoordLat, 2));
-                matCoordLon = (double)(Math.Round((double)matCoordLon, 2));
-
-            if (coord_lat == matCoordLat && coord_lon == matCoordLon)
-                {
-                    ciudad = matrizCoordenadas[i, 0];
-                }
-            }
-            if (ciudad.Equals(""))
-            {
-                return "error";
-            }
-            else
-            {
-                return ciudad;
-            }*/

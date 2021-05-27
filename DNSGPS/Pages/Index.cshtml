@@ -10,8 +10,23 @@
         var origen = Request.Form["origen"].ToString();
         var destino = Request.Form["destino"].ToString();
         Task<Ruta> rutas = DNSGPS.Controller.ApiRequest(origen, destino);
-        byte[] bytes = Encoding.UTF8.GetBytes(rutas.Result.resumenViaje.llegada.ToString());
-        Response.Body.WriteAsync(bytes);
+
+        byte[] tiempo_origen = Encoding.UTF8.GetBytes("Climatología en " + origen + ": " + rutas.Result.tiempo_origen + "<br>");
+        Response.Body.WriteAsync(tiempo_origen);
+        byte[] tiempo_destino = Encoding.UTF8.GetBytes("Climatología en " + destino + ": " + rutas.Result.tiempo_destino + "<br>");
+        Response.Body.WriteAsync(tiempo_destino);
+        byte[] salida = Encoding.UTF8.GetBytes("Salida de " + origen + ": " + rutas.Result.resumenViaje.salida + "<br>");
+        Response.Body.WriteAsync(salida);
+        byte[] llegada = Encoding.UTF8.GetBytes("Llegada a " + destino + ": " + rutas.Result.resumenViaje.llegada + "<br>");
+        Response.Body.WriteAsync(llegada);
+
+        byte[] ruta = Encoding.UTF8.GetBytes("Mejor ruta:<br>");
+        Response.Body.WriteAsync(ruta);
+        for (int i = 0; i < rutas.Result.listaCiudades.Count; i++)
+        {
+            byte[] coords = Encoding.UTF8.GetBytes(rutas.Result.listaCiudades[i] + "<br>");
+            Response.Body.WriteAsync(coords);
+        }
     }
 }
 
@@ -20,15 +35,6 @@
 <head>
 </head>
 <body>
-    <div class="login_container">
-        Iniciar sesión:<br>
-        <form method="post" action="">
-            Usuario: <input type="text" id="user_textBox" name="user_textBox" required><br>
-            Password: <input type="password" id="password_textBox" name="password_textBox" required><br>
-            <input type="button" id="login_boton" onclick="prueba()" value="Enviar"
-        </form>
-    </div>
-
     <div class="text-center">
         <h1>Calcular ruta</h1>
         <form method="post">

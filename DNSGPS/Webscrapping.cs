@@ -96,14 +96,7 @@ public static class Webscrapping
         ciudades.Add("Zaragoza");
         ciudades.Add("Ceuta");
         ciudades.Add("Melilla");
-        Console.WriteLine(ciudades.Count);
-        //string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
-       // System.IO.StreamReader file = new System.IO.StreamReader(path);
-        //string ciudad ="";
-        /*while ((ciudad = file.ReadLine())!= null)
-        {
-            ciudades.Add(ciudad);
-        }*/
+
         List<string> listaLatitudes = new List<string>();
         List<string> listaLongitudes = new List<string>();
 

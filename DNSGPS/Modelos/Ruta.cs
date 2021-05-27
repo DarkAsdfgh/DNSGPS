@@ -9,7 +9,7 @@ namespace DNSGPS
     public struct DatosRuta
     {
         public IEnumerable<int> tiempo;
-        public IEnumerable<GeoCoordinate> coordenadas;
+        public List<string> coordenadas;
         public IEnumerable<string> pasos;
         public IEnumerable<string> direcciones;
         public DatosRuta(IEnumerable<JToken> json)
@@ -17,14 +17,14 @@ namespace DNSGPS
             IEnumerable<int> intAux = json.Values<int>("travelTimeInSeconds");
             tiempo = intAux;
 
-            IEnumerable<double> auxLatitudes = json.Values("point").Values<double>("latitude");
-            IEnumerable<double> auxLongitudes = json.Values("point").Values<double>("longitude");
+            IEnumerable<String> auxLatitudes = json.Values("point").Values<string>("latitude");
+            IEnumerable<String> auxLongitudes = json.Values("point").Values<string>("longitude");
 
-            List<GeoCoordinate> auxList = new List<GeoCoordinate>();
+            List<String> auxList = new List<String>();
 
             for (int i = 0; i < auxLatitudes.Count(); i++)
             {
-                auxList.Add(new GeoCoordinate(auxLatitudes.ElementAt(i), auxLongitudes.ElementAt(i)));
+                auxList.Add(auxLatitudes.ElementAt(i) + ":" + auxLongitudes.ElementAt(i));
             }
 
             coordenadas = auxList;
@@ -82,10 +82,16 @@ namespace DNSGPS
     {
         public Resumen resumenViaje { get; set; }
         public IEnumerable<DatosRuta> listaRutas { get; set; }
-        public Ruta(Resumen resumen, IEnumerable<DatosRuta> rutas)
+        public List<string> listaCiudades { get; set; }
+        public string tiempo_origen { get; set; }
+        public string tiempo_destino { get; set; }
+        public Ruta(Resumen resumen, IEnumerable<DatosRuta> rutas, List<string> ciudades, string weather_origen, string weather_destino)
         {
             resumenViaje = resumen;
             listaRutas = rutas;
+            listaCiudades = ciudades;
+            tiempo_origen = weather_origen;
+            tiempo_destino = weather_destino;
         }
     }
 }

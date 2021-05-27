@@ -22,10 +22,6 @@ namespace DNSGPS
             string coordenadas = Coordenadas.CambiaACoordenadas(origen, destino, matrizCoordenadas);
             string ciudad = Coordenadas.CambiaACiudad(coordenadas, matrizCoordenadas);
 
-            Console.WriteLine(origen + destino);
-            Console.WriteLine(coordenadas);
-            Console.WriteLine(ciudad);
-
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage responseMessage = await client.GetAsync("https://api.tomtom.com/routing/1/calculateRoute/" + coordenadas + "/json?maxAlternatives=2&instructionsType=coded&avoid=unpavedRoads&key=QNDSKoghJXsfleTToOkVBTPLwkaYbauA");
@@ -45,7 +41,17 @@ namespace DNSGPS
                     listaRutas.Add(new DatosRuta(jRuta));
                 }
 
-                return new Ruta(resumen, listaRutas);
+                List<string> coords = listaRutas[0].coordenadas;
+                List<string> ciudades = new List<string>();
+                string tiempo_origen = Coordenadas.TiempoCiudad(origen, matrizTiempos);
+                string tiempo_destino = Coordenadas.TiempoCiudad(destino, matrizTiempos);
+
+                for(int i = 0; i < coords.Count; i++)
+                {
+                    ciudades.Add(Coordenadas.CambiaACiudad(coords[i], matrizCoordenadas));
+                }
+
+                return new Ruta(resumen, listaRutas, ciudades, tiempo_origen, tiempo_destino);
             }
         }
 
