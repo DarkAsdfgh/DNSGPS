@@ -20,8 +20,14 @@ namespace DNSGPS
             matrizCoordenadas = Webscrapping.EjecutarCoordenadas();
 
             string coordenadas = Coordenadas.CambiaACoordenadas(origen, destino, matrizCoordenadas);
-            string ciudad = Coordenadas.CambiaACiudad(coordenadas, matrizCoordenadas);
 
+            if (coordenadas == ":" || coordenadas == "Coordenadas indeterminadas")
+            {
+                throw new Exception("Las ciudades introducidas no existen, revise los nombres: "+origen + " " +destino);
+            }
+
+            string ciudad = Coordenadas.CambiaACiudad(coordenadas, matrizCoordenadas);
+            
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage responseMessage = await client.GetAsync("https://api.tomtom.com/routing/1/calculateRoute/" + coordenadas + "/json?maxAlternatives=2&instructionsType=coded&avoid=unpavedRoads&key=QNDSKoghJXsfleTToOkVBTPLwkaYbauA");
