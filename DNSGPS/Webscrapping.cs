@@ -44,7 +44,7 @@ public static class Webscrapping
     {
         List<string> ciudades = new List<string>();
         ciudades.Add("Almería");
-        ciudades.Add("Vitoria - Gasteiz");
+        ciudades.Add("Vitoria-Gasteiz");
         ciudades.Add("Albacete");
         ciudades.Add("Madrid");
         ciudades.Add("Alicante");
@@ -68,7 +68,7 @@ public static class Webscrapping
         ciudades.Add("León_(España)");
         ciudades.Add("Lleida");
         ciudades.Add("Huesca");
-        ciudades.Add("Donostia - San Sebastián");
+        ciudades.Add("Donostia-San Sebastián");
         ciudades.Add("Logroño");
         ciudades.Add("Lugo");
         ciudades.Add("Málaga");
