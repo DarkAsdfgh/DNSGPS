@@ -11,7 +11,7 @@ namespace DNSGPS
     public static class Controller
     {
         [WebMethod]
-        public static async Task<Ruta> ApiRequest()
+        public static async Task<Ruta> ApiRequest(string origen, string destino)
         {
             string[,] matrizTiempos = new string[10, 10];
             matrizTiempos = Webscrapping.EjecutarTiempo();
@@ -19,21 +19,21 @@ namespace DNSGPS
             string[,] matrizCoordenadas = new string[10, 10];
             matrizCoordenadas = Webscrapping.EjecutarCoordenadas();
 
-            string coordenadas = Coordenadas.CambiaACoordenadas("Almería", "Santander",matrizCoordenadas);
-            string ciudad = Coordenadas.CambiaACiudad("37.769722222222,-3.7888888888889", matrizCoordenadas);
+            string coordenadas = Coordenadas.CambiaACoordenadas(origen, destino, matrizCoordenadas);
+            string ciudad = Coordenadas.CambiaACiudad(coordenadas, matrizCoordenadas);
 
+            Console.WriteLine(origen + destino);
             Console.WriteLine(coordenadas);
             Console.WriteLine(ciudad);
 
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage responseMessage = await client.GetAsync("https://api.tomtom.com/routing/1/calculateRoute/52.50931%2C13.42936%3A52.50274%2C13.43872/json?maxAlternatives=2&instructionsType=coded&avoid=unpavedRoads&key=QNDSKoghJXsfleTToOkVBTPLwkaYbauA");
+                HttpResponseMessage responseMessage = await client.GetAsync("https://api.tomtom.com/routing/1/calculateRoute/" + coordenadas + "/json?maxAlternatives=2&instructionsType=coded&avoid=unpavedRoads&key=QNDSKoghJXsfleTToOkVBTPLwkaYbauA");
                 HttpContent httpcontent = responseMessage.Content;
                 string content = await httpcontent.ReadAsStringAsync();
 
                 JObject jObject = JObject.Parse(content);
                 JToken jRutas = jObject["routes"];
-
 
                 Resumen resumen = new Resumen(jRutas.Values("summary"));
 

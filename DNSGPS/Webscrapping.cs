@@ -67,8 +67,8 @@ public static class Webscrapping
 
             for (int k=0; k<1; k++)
             {
-                listaLatitudes.Add(latitudes[k].InnerText);
-                listaLongitudes.Add(longitudes[k].InnerText);   
+                listaLatitudes.Add(latitudes[k].InnerText.Trim());
+                listaLongitudes.Add(longitudes[k].InnerText.Trim());   
             }
             
         }
