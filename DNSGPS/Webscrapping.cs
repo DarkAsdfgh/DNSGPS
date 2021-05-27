@@ -42,64 +42,62 @@ public static class Webscrapping
 
     public static string[,] EjecutarCoordenadas()
     {
-        List<string> ciudades = new List<string>()
-        {
-            "Almería",
-            "Vitoria - Gasteiz",
-            "Albacete",
-            "Madrid",
-            "Alicante",
-            "Ávila",
-            "Badajoz",
-            "Palma de Mallorca",
-            "Barcelona",
-            "Burgos",
-            "Ciudad Real",
-            "Cáceres",
-            "Cadiz",
-            "Granada",
-            "Córdoba_(España)",
-            "A Coruña",
-            "Girona",
-            "Castellón de la Plana",
-            "Guadalajara_(España)",
-            "Cuenca_(España)",
-            "Huelva",
-            "Jaén",
-            "León_(España)",
-            "Lleida",
-            "Huesca",
-            "Donostia - San Sebastián",
-            "Logroño",
-            "Lugo",
-            "Málaga",
-            "Murcia",
-            "Ourense",
-            "Palencia",
-            "Las Palmas de Gran Canaria",
-            "Pontevedra",
-            "Pamplona",
-            "Oviedo",
-            "Sevilla",
-            "Salamanca",
-            "Segovia",
-            "Santa Cruz de Tenerife",
-            "Santander_(España)",
-            "Soria",
-            "Tarragona",
-            "Teruel",
-            "Toledo",
-            "Zamora",
-            "Bilbao",
-            "Valencia",
-            "Valladolid",
-            "Zaragoza",
-            "Ceuta",
-            "Melilla"
-        };
+        List<string> ciudades = new List<string>();
+        ciudades.Add("Almería");
+        ciudades.Add("Vitoria - Gasteiz");
+        ciudades.Add("Albacete");
+        ciudades.Add("Madrid");
+        ciudades.Add("Alicante");
+        ciudades.Add("Ávila");
+        ciudades.Add("Badajoz");
+        ciudades.Add("Palma de Mallorca");
+        ciudades.Add("Barcelona");
+        ciudades.Add("Burgos");
+        ciudades.Add("Ciudad Real");
+        ciudades.Add("Cáceres");
+        ciudades.Add("Cadiz");
+        ciudades.Add("Granada");
+        ciudades.Add("Córdoba_(España)");
+        ciudades.Add("A Coruña");
+        ciudades.Add("Girona");
+        ciudades.Add("Castellón de la Plana");
+        ciudades.Add("Guadalajara_(España)");
+        ciudades.Add("Cuenca_(España)");
+        ciudades.Add("Huelva");
+        ciudades.Add("Jaén");
+        ciudades.Add("León_(España)");
+        ciudades.Add("Lleida");
+        ciudades.Add("Huesca");
+        ciudades.Add("Donostia - San Sebastián");
+        ciudades.Add("Logroño");
+        ciudades.Add("Lugo");
+        ciudades.Add("Málaga");
+        ciudades.Add("Murcia");
+        ciudades.Add("Ourense");
+        ciudades.Add("Palencia");
+        ciudades.Add("Las Palmas de Gran Canaria");
+        ciudades.Add("Pontevedra");
+        ciudades.Add("Pamplona");
+        ciudades.Add("Oviedo");
+        ciudades.Add("Sevilla");
+        ciudades.Add("Salamanca");
+        ciudades.Add("Segovia");
+        ciudades.Add("Santa Cruz de Tenerife");
+        ciudades.Add("Santander_(España)");
+        ciudades.Add("Soria");
+        ciudades.Add("Tarragona");
+        ciudades.Add("Teruel");
+        ciudades.Add("Toledo");
+        ciudades.Add("Zamora");
+        ciudades.Add("Bilbao");
+        ciudades.Add("Valencia");
+        ciudades.Add("Valladolid");
+        ciudades.Add("Zaragoza");
+        ciudades.Add("Ceuta");
+        ciudades.Add("Melilla");
         //string path = Directory.GetCurrentDirectory() + @"\provincias.txt";
        // System.IO.StreamReader file = new System.IO.StreamReader(path);
-        string ciudad ="";
+        //string ciudad ="";
         /*while ((ciudad = file.ReadLine())!= null)
         {
             ciudades.Add(ciudad);
